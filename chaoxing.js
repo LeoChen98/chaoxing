@@ -9,10 +9,10 @@ t();
 setInterval(function () {
     video.children('h4').children('span').css("color", "blue");
 
-    if ($('.x-container').length > 0) {
+    if ($("#iframe", parent.document.body).contents().find('iframe').contents().find('.x-container').length > 0) {
         console.log("检测到第" + i + "个弹题窗口");
-        $('.x-container').remove();
-        $('.x-component').remove();
+        $("#iframe", parent.document.body).contents().find('iframe').contents().find('.x-container').remove();
+        $("#iframe", parent.document.body).contents().find('iframe').contents().find('.x-component').remove();
         console.log("已关闭");
         i++;
     }
@@ -27,8 +27,12 @@ setInterval(function () {
         v++;
     } else if ($("#iframe", parent.document.body).contents().find('iframe').contents().find('.vjs-play-control')[0].title == "播放") {
         $("#iframe", parent.document.body).contents().find('iframe').contents().find('.vjs-big-play-button').click();
-        $("#iframe", parent.document.body).contents().find('iframe').contents().find('.vjs-mute-control').click();
-        console.log("已静音");
+
+        if ($("#iframe", parent.document.body).contents().find('iframe').contents().find('.vjs-mute-control')[0].title == "静音") {
+            $("#iframe", parent.document.body).contents().find('iframe').contents().find('.vjs-mute-control')[0].click();
+            console.log("已静音");
+        }
+
     }
 }, 5000);
 
@@ -48,8 +52,15 @@ function t() {
     var playbtn = playerf1.contents().find('.vjs-big-play-button');
 
     playbtn.click();
-    $("#iframe", parent.document.body).contents().find('iframe').contents().find('.vjs-mute-control').click();
-    console.log("已静音");
+    if ($("#iframe", parent.document.body).contents().find('iframe').contents().find('.vjs-mute-control')[0].title == "静音") {
+        $("#iframe", parent.document.body).contents().find('iframe').contents().find('.vjs-mute-control')[0].click();
+        console.log("已静音");
+    }
 
+    if ($("#iframe", parent.document.body).contents().find('iframe').contents().find('.x-container').length > 0) {
+        $("#iframe", parent.document.body).contents().find('iframe').contents().find('.x-container').remove();
+        $("#iframe", parent.document.body).contents().find('iframe').contents().find('.x-component').remove();
+        i++;
+    }
 }
 

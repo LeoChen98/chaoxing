@@ -47,20 +47,20 @@ function t() {
         }
     }
 
-    var playerp = $("#iframe", parent.document.body);
-    var playerf1 = playerp.contents().find('iframe');
-    var playbtn = playerf1.contents().find('.vjs-big-play-button');
+    $("span[title='视频']").click();
 
-    playbtn.click();
-    if ($("#iframe", parent.document.body).contents().find('iframe').contents().find('.vjs-mute-control')[0].title == "静音") {
-        $("#iframe", parent.document.body).contents().find('iframe').contents().find('.vjs-mute-control')[0].click();
-        console.log("已静音");
-    }
+    setTimeout(function () {
+        var playerp = $("#iframe", parent.document.body);
+        var playerf1 = playerp.contents().find('iframe');
+        var playbtn = playerf1.contents().find('.vjs-big-play-button');
 
-    if ($("#iframe", parent.document.body).contents().find('iframe').contents().find('.x-container').length > 0) {
-        $("#iframe", parent.document.body).contents().find('iframe').contents().find('.x-container').remove();
-        $("#iframe", parent.document.body).contents().find('iframe').contents().find('.x-component').remove();
-        i++;
-    }
+        playbtn.click();
+
+        if ($("#iframe", parent.document.body).contents().find('iframe').contents().find('.x-container').length > 0) {
+            $("#iframe", parent.document.body).contents().find('iframe').contents().find('.x-container').remove();
+            $("#iframe", parent.document.body).contents().find('iframe').contents().find('.x-component').remove();
+            i++;
+        }
+    },5000);
 }
 

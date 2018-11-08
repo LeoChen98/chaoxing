@@ -22,9 +22,9 @@ setInterval(function () {
         console.log("检测到视频观看完成，准备跳到下一节:『" + video[a].title + "』");
         video[a].click();
         console.log("已跳转");
-        setTimeout(t(), 10000);
         console.log("目前播放了" + v + "个视频");
         v++;
+        setTimeout(t(), 10000);
     } else if ($("#iframe", parent.document.body).contents().find('iframe').contents().find('.vjs-play-control')[0].title == "播放") {
         $("#iframe", parent.document.body).contents().find('iframe').contents().find('.vjs-big-play-button').click();
 

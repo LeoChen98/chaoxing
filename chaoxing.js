@@ -1,4 +1,3 @@
-var video;
 var i = 1;
 var v = 1;
 
@@ -7,7 +6,7 @@ var a = 0;
 t();
 
 setInterval(function () {
-    video.children('h4').children('span').css("color", "blue");
+    $('.ncells a').children('h4').children('span').css("color", "blue");
 
     if ($("#iframe", parent.document.body).contents().find('iframe').contents().find('.x-container').length > 0) {
         console.log("检测到第" + i + "个弹题窗口");
@@ -19,8 +18,8 @@ setInterval(function () {
 
     if ($("#iframe", parent.document.body).contents().find('iframe').contents().find('.vjs-play-control')[0].title == "重播") {
         a++;
-        console.log("检测到视频观看完成，准备跳到下一节:『" + video[a].title + "』");
-        video[a].click();
+        console.log("检测到视频观看完成，准备跳到下一节:『" + $('.ncells a')[a].title + "』");
+        $('.ncells a')[a].click();
         console.log("已跳转");
         console.log("目前播放了" + v + "个视频");
         v++;
@@ -37,12 +36,11 @@ setInterval(function () {
 }, 5000);
 
 function t() {
-    video = $('.ncells a');
-    video.children('h4').children('span').css("color", "blue");
-    console.log("已选取" + video.length + "个小节,并已用蓝色标明,请检查是否有遗漏,如有遗漏,概不负责");
+    $('.ncells a').children('h4').children('span').css("color", "blue");
+    console.log("已选取" + $('.ncells a').length + "个小节,并已用蓝色标明,请检查是否有遗漏,如有遗漏,概不负责");
 
     if (a == 0) {
-        while ($('.main h1').text() != video[a].title) {
+        while ($('.main h1').text() != $('.ncells a')[a].title) {
             a++;
         }
     }

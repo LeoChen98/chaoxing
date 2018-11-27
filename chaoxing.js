@@ -1,3 +1,4 @@
+console.log("超星慕课刷课脚本 v1.0 by Leo \r\n项目主页:https://github.com/LeoChen98/chaoxing");
 var i = 1;
 var v = 1;
 

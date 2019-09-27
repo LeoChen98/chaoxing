@@ -1,6 +1,7 @@
 console.log("超星慕课刷课脚本 v1.0 by Leo \r\n项目主页:https://github.com/LeoChen98/chaoxing");
 var i = 1;
 var v = 1;
+var boost_count = 0;
 
 var b = false;
 
@@ -11,6 +12,7 @@ t();
 setInterval(function () {
     $('.ncells a').children('h4').children('span').css("color", "blue");
 
+
     if (b) {
         if ($("#iframe", parent.document.body).contents().find('iframe').contents().find('.x-container').length > 0) {
             console.log("检测到第" + i + "个弹题窗口");
@@ -20,6 +22,16 @@ setInterval(function () {
             i++;
         }
 
+        if (count != 3) {
+            var boosterp = $("#iframe",parent.document.body);
+            var boosterf1 = boosterp.contents().find('iframe');
+            var boosterf2 = boosterf1.contents().find('.vjs-control-bar');
+            var boosterbtn = boosterf2.contents().find('.vjs-playback-rate')    
+            boosterbtn.click();
+            console.log("加速！！！");
+            boost_count++
+        }
+
         if ($("#iframe", parent.document.body).contents().find('iframe').contents().find('.vjs-play-control')[0].title == "重播") {
             a++;
             console.log("检测到视频观看完成，准备跳到下一节:『" + $('.ncells a')[a].title + "』");
@@ -27,6 +39,7 @@ setInterval(function () {
             console.log("已跳转");
             console.log("目前播放了" + v + "个视频");
             v++;
+            boost_count = 0;
             setTimeout(t(), 10000);
         } else if ($("#iframe", parent.document.body).contents().find('iframe').contents().find('.vjs-play-control')[0].title == "播放") {
             $("#iframe", parent.document.body).contents().find('iframe').contents().find('.vjs-big-play-button').click();
@@ -68,4 +81,5 @@ function t() {
         b = true;
     }, 5000);
 }
+
 
